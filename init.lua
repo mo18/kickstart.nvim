@@ -118,13 +118,6 @@ vim.schedule(function()
   vim.opt.clipboard = 'unnamedplus'
 end)
 
--- change tabs to 2 spaces
--- vim.opt.expandtab = true
--- vim.opt.tabstop = 2
--- vim.opt.softtabstop = 2
--- vim.opt.shiftwidth = 2
--- vim.opt.autoindent = true
-
 -- Enable break indent
 vim.opt.breakindent = true
 
@@ -165,9 +158,6 @@ vim.opt.scrolloff = 10
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
-
--- remap the <ESC> key to jj
-vim.keymap.set('i', 'jj', '<ESC>', { noremap = false })
 
 -- Clear highlights on search when pressing <Esc> in normal mode
 --  See `:help hlsearch`
