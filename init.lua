@@ -174,6 +174,29 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 -- or just use <C-\><C-n> to exit terminal mode
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
+-- remap gh and gl to move to the beggining and end of lines
+local function jump_to_line_start()
+  local col = vim.fn.col '.'
+  local first_non_blank = vim.fn.indent(vim.fn.line '.') + 1
+  if col == first_non_blank then
+    return '0' -- jump to beginning of the line
+  else
+    return '^' -- jump to the first non-blank character
+  end
+end
+
+local function jump_to_line_end()
+  return '$'
+end
+
+vim.keymap.set({ 'n', 'v' }, 'gh', function()
+  return jump_to_line_start()
+end, { noremap = true, expr = true, desc = 'Beginning of line' })
+
+vim.keymap.set({ 'n', 'v' }, 'gl', function()
+  return jump_to_line_end()
+end, { noremap = true, expr = true, desc = 'End of line' })
+
 -- TIP: Disable arrow keys in normal mode
 -- vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
 -- vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
