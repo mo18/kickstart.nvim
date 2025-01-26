@@ -23,7 +23,11 @@ return {
       },
       group_empty_dirs = true,
       filtered_items = {
-        hide_dotfiles = true,
+        hide_dotfiles = false,
+        hide_by_name = {
+          '.DS_Store',
+          '.git',
+        },
       },
       window = {
         width = 50,
